@@ -1,0 +1,478 @@
+.categorias-container {
+  width: 100%;
+}
+
+.categorias-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.btn-nueva-cat {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, var(--verde-oscuro), var(--verde-navbar));
+  color: white;
+  border: none;
+  padding: 11px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 0.95rem;
+  transition: all 0.2s;
+}
+
+.btn-nueva-cat:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+/* Lista */
+.categorias-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Card padre */
+.categoria-padre-card {
+  background: rgba(255,255,255,0.88);
+  border-radius: 14px;
+  box-shadow: var(--sombra);
+  border: 1px solid var(--gris-borde);
+  overflow: hidden;
+}
+
+/* Row padre */
+.cat-padre-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+  border-bottom: 1px solid transparent;
+}
+
+.cat-padre-row:hover {
+  background: #f0faf4;
+}
+
+.btn-expand {
+  background: none;
+  border: none;
+  color: var(--verde-oscuro);
+  cursor: pointer;
+  font-size: 0.9rem;
+  padding: 4px;
+  flex-shrink: 0;
+}
+
+.cat-icon-padre {
+  font-size: 1.6rem;
+  flex-shrink: 0;
+}
+
+.cat-info {
+  flex: 1;
+}
+
+.cat-info h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--negro);
+  margin-bottom: 2px;
+}
+
+.cat-info h4 {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--negro);
+  margin-bottom: 2px;
+}
+
+.cat-info p {
+  font-size: 0.82rem;
+  color: #888;
+}
+
+/* Badge */
+.badge-subcats {
+  background: var(--verde-pastel);
+  color: var(--verde-oscuro);
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* Acciones */
+.cat-acciones {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.btn-agregar-sub {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: var(--verde-pastel);
+  color: var(--verde-oscuro);
+  border: 1px solid var(--verde-medio);
+  padding: 6px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.8rem;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.btn-agregar-sub:hover {
+  background: var(--verde-oscuro);
+  color: white;
+}
+
+.btn-editar-cat {
+  background: #e8f4f8;
+  color: #1a7fa8;
+  border: 1px solid #bee5eb;
+  padding: 6px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: all 0.2s;
+}
+
+.btn-editar-cat:hover {
+  background: #1a7fa8;
+  color: white;
+}
+
+.btn-eliminar-cat {
+  background: #f8d7da;
+  color: #e63946;
+  border: 1px solid #f5c6cb;
+  padding: 6px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: all 0.2s;
+}
+
+.btn-eliminar-cat:hover {
+  background: #e63946;
+  color: white;
+}
+
+/* Subcategorías */
+.subcategorias-lista {
+  background: #f8fdf9;
+  border-top: 1px solid var(--gris-borde);
+}
+
+.subcat-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 20px 12px 50px;
+  border-bottom: 1px solid var(--gris-borde);
+  transition: background 0.2s;
+}
+
+.subcat-row:last-child {
+  border-bottom: none;
+}
+
+.subcat-row:hover {
+  background: #e8f5e9;
+}
+
+.subcat-icon {
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.sin-subcats {
+  padding: 14px 20px 14px 50px;
+  font-size: 0.85rem;
+  color: #888;
+  border-top: 1px solid var(--gris-borde);
+  background: #f8fdf9;
+}
+
+.sin-subcats button {
+  background: none;
+  border: none;
+  color: var(--verde-oscuro);
+  cursor: pointer;
+  font-weight: 600;
+  text-decoration: underline;
+  font-size: 0.85rem;
+}
+
+/* Modal */
+.modal-cat {
+  background: white;
+  border-radius: 18px;
+  width: 100%;
+  max-width: 440px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+  overflow: hidden;
+}
+
+.modal-cat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 24px;
+  background: linear-gradient(135deg, var(--verde-oscuro), var(--verde-navbar));
+  color: white;
+}
+
+.modal-cat-header h2 {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.modal-cat-body {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.form-grupo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-grupo label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #666;
+}
+
+.form-grupo input,
+.checkout-select {
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--gris-borde);
+  font-size: 0.92rem;
+  outline: none;
+  transition: border 0.2s;
+  background: white;
+  color: var(--negro);
+  width: 100%;
+}
+
+.form-grupo input:focus,
+.checkout-select:focus {
+  border-color: var(--verde-medio);
+}
+
+.modal-mensaje {
+  margin: 0 24px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.88rem;
+  text-align: center;
+}
+
+.modal-mensaje.success {
+  background: #d4edda;
+  color: #155724;
+}
+
+.modal-mensaje.error {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+.modal-cat-footer {
+  display: flex;
+  gap: 10px;
+  padding: 16px 24px;
+  border-top: 1px solid var(--gris-borde);
+}
+
+.btn-cancelar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  border: 2px solid var(--gris-borde);
+  color: #666;
+  padding: 10px 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+}
+
+.btn-cancelar:hover {
+  border-color: #e63946;
+  color: #e63946;
+}
+
+.btn-guardar {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: linear-gradient(135deg, var(--verde-oscuro), var(--verde-navbar));
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 0.95rem;
+  transition: all 0.2s;
+}
+
+.btn-guardar:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+@media (max-width: 768px) {
+
+  .categorias-container {
+    padding: 0 12px;
+  }
+
+  /* Header: apilar en columna */
+  .categorias-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .btn-nueva-cat {
+    width: 100%;
+    justify-content: center;
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+
+  /* Fila categoría padre: reorganizar en 2 filas */
+  .cat-padre-row {
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 12px 14px;
+  }
+
+  /* Flecha expand + icono + info ocupan toda la fila */
+  .btn-expand {
+    order: 0;
+  }
+
+  .cat-icon-padre {
+    order: 1;
+    font-size: 1.3rem;
+  }
+
+  .cat-info {
+    order: 2;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .cat-info h3 {
+    font-size: 0.92rem;
+  }
+
+  .cat-info h4 {
+    font-size: 0.85rem;
+  }
+
+  .cat-info p {
+    font-size: 0.75rem;
+  }
+
+  /* Badge y acciones van a la segunda fila completa */
+  .cat-badges {
+    order: 3;
+    width: 100%;
+    padding-left: 52px; /* alinear con el texto */
+  }
+
+  .cat-acciones {
+    order: 4;
+    width: 100%;
+    padding-left: 52px;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .btn-agregar-sub {
+    font-size: 0.75rem;
+    padding: 5px 10px;
+  }
+
+  .btn-editar-cat,
+  .btn-eliminar-cat {
+    padding: 5px 9px;
+    font-size: 0.8rem;
+  }
+
+  /* Subcategorías: menos indentación */
+  .subcat-row {
+    padding: 10px 14px 10px 30px;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .subcat-row .cat-info {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .subcat-row .cat-acciones {
+    width: auto;
+    padding-left: 0;
+  }
+
+  .sin-subcats {
+    padding: 12px 14px 12px 30px;
+    font-size: 0.8rem;
+  }
+
+  /* Modal */
+  .modal-cat {
+    max-width: 95vw;
+    margin: 0 10px;
+  }
+
+  .modal-cat-header {
+    padding: 14px 16px;
+  }
+
+  .modal-cat-header h2 {
+    font-size: 1rem;
+  }
+
+  .modal-cat-body {
+    padding: 16px;
+    gap: 12px;
+  }
+
+  .modal-cat-footer {
+    padding: 12px 16px;
+    gap: 8px;
+  }
+
+  .btn-cancelar,
+  .btn-guardar {
+    font-size: 0.85rem;
+    padding: 9px 12px;
+  }
+}

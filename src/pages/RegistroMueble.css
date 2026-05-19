@@ -1,0 +1,524 @@
+.registro-container {
+  width: 100%;
+  padding-bottom: 30px;
+}
+
+/* Progress */
+.registro-progress {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30px;
+  background: rgba(255,255,255,0.7);
+  padding: 20px;
+  border-radius: 14px;
+  box-shadow: var(--sombra);
+}
+
+.progress-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+/* Layout */
+.registro-layout {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 24px;
+  align-items: start;
+}
+
+.registro-layout-exito {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: 1fr;
+}
+
+.registro-layout-exito .registro-card {
+  max-width: 680px;
+  width: 100%;
+  margin: 0 auto;
+}
+/* Card */
+.registro-card {
+  background: rgba(255,255,255,0.88);
+  border-radius: 16px;
+  padding: 28px;
+  box-shadow: var(--sombra);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.registro-card h2 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--verde-oscuro);
+}
+
+.registro-subtitle {
+  color: #666;
+  font-size: 0.9rem;
+  margin-top: -12px;
+}
+
+/* Form */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.form-grupo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-full {
+  grid-column: 1 / -1;
+}
+
+.form-grupo label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #666;
+}
+
+.form-grupo input,
+.form-grupo select,
+.form-grupo textarea {
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--gris-borde);
+  font-size: 0.92rem;
+  outline: none;
+  transition: border 0.2s;
+  background: white;
+  color: var(--negro);
+  width: 100%;
+  font-family: inherit;
+}
+
+.form-grupo input:focus,
+.form-grupo select:focus,
+.form-grupo textarea:focus {
+  border-color: var(--verde-medio);
+}
+
+/* Stock preview */
+.stock-preview {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.stock-item {
+  background: var(--gris-claro);
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  border: 1px solid var(--gris-borde);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.stock-num {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--verde-oscuro);
+}
+
+.stock-num.amarillo {
+  color: #f4a261;
+}
+
+.stock-label {
+  font-size: 0.82rem;
+  color: #888;
+}
+
+/* Fotos */
+.fotos-section {
+  background: var(--gris-claro);
+  border-radius: 12px;
+  padding: 16px;
+  border: 1px solid var(--gris-borde);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.fotos-section h3 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--verde-oscuro);
+}
+
+.fotos-hint {
+  font-size: 0.8rem;
+  color: #888;
+}
+
+.upload-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--verde-oscuro);
+  color: white;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.88rem;
+  transition: opacity 0.2s;
+  width: fit-content;
+}
+
+.upload-btn:hover {
+  opacity: 0.9;
+}
+
+.fotos-preview {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.foto-preview-item {
+  position: relative;
+  width: 90px;
+  height: 90px;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 2px solid var(--verde-medio);
+}
+
+.foto-preview-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.foto-principal-badge {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(64,145,108,0.85);
+  color: white;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-align: center;
+  padding: 2px;
+}
+
+.foto-eliminar {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  background: rgba(230,57,70,0.85);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  font-size: 0.65rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fotos-nota {
+  background: #fff3cd;
+  border: 1px solid #ffc107;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 0.82rem;
+  color: #856404;
+}
+
+/* Resumen lateral */
+.registro-resumen {
+  background: rgba(255,255,255,0.88);
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: var(--sombra);
+  position: sticky;
+  top: 85px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.registro-resumen h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--verde-oscuro);
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--verde-pastel);
+}
+
+.resumen-dato {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--gris-borde);
+}
+
+.resumen-dato:last-child {
+  border-bottom: none;
+}
+
+.resumen-label {
+  font-size: 0.72rem;
+  color: #888;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.resumen-valor {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--negro);
+}
+
+.registro-exito {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 60px 20px;
+  text-align: center;
+  min-height: 400px;
+  grid-column: 1 / -1;
+}
+
+.exito-icon-registro {
+  font-size: 5rem;
+  color: var(--verde-oscuro);
+}
+
+.registro-exito h2 {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--verde-oscuro);
+}
+
+.registro-exito p {
+  color: #555;
+}
+
+.exito-acciones {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Mensajes */
+.checkout-mensaje.success {
+  background: #d4edda;
+  color: #155724;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.checkout-mensaje.error {
+  background: #f8d7da;
+  color: #721c24;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.input-error {
+  border-color: #e63946 !important;
+  background: #fff5f5 !important;
+}
+
+.error-msg {
+  font-size: 0.78rem;
+  color: #e63946;
+  font-weight: 600;
+  margin-top: 2px;
+  display: block;
+}
+
+
+@media (max-width: 768px) {
+
+  .registro-container {
+    padding: 0 12px 30px 12px;
+  }
+
+  /* Progress: reducir tamaño para que quepan los 4 pasos */
+  .registro-progress {
+    padding: 14px 10px;
+    overflow-x: hidden;
+  }
+
+  .progress-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .progress-step {
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .progress-step span {
+    font-size: 0.65rem;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  .step-circle {
+    width: 36px;
+    height: 36px;
+    font-size: 0.85rem;
+  }
+
+  /* Línea entre pasos más corta */
+  .progress-linea {
+    width: 24px;
+    height: 2px;
+    align-self: flex-start;
+    margin-top: 18px; /* centrar con el círculo */
+  }
+
+  /* Layout: 1 columna, resumen abajo */
+  .registro-layout {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  /* Card principal */
+  .registro-card {
+    padding: 18px 16px;
+    gap: 14px;
+  }
+
+  .registro-card h2 {
+    font-size: 1.1rem;
+  }
+
+  .registro-subtitle {
+    font-size: 0.82rem;
+  }
+
+  /* Form: 1 columna */
+  .form-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .form-full {
+    grid-column: 1;
+  }
+
+  /* Stock preview: 1 columna */
+  .stock-preview {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .stock-num {
+    font-size: 1.8rem;
+  }
+
+  /* Fotos */
+  .fotos-section {
+    padding: 14px 12px;
+  }
+
+  .foto-preview-item {
+    width: 75px;
+    height: 75px;
+  }
+
+  /* Resumen lateral: ocultar en mobile para no ocupar espacio */
+  .registro-resumen {
+    display: none;
+  }
+
+  /* Botones de navegación */
+  .checkout-acciones {
+    flex-direction: row;
+    gap: 10px;
+  }
+
+  .btn-siguiente,
+  .btn-volver-checkout,
+  .btn-confirmar-checkout {
+    flex: 1;
+    justify-content: center;
+    font-size: 0.88rem;
+    padding: 11px 10px;
+  }
+  /* Reemplaza todo lo del progress dentro del @media (max-width: 768px) */
+
+  .registro-progress {
+    padding: 14px 6px;
+    overflow-x: hidden;
+    gap: 0;
+  }
+
+  /* Cada wrapper (círculo + label + línea) en fila */
+  .progress-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    flex: 1;
+  }
+
+  /* El step en columna: círculo arriba, label abajo */
+  .progress-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+    width: 64px;
+  }
+
+  .progress-step span {
+    font-size: 0.6rem;
+    text-align: center;
+    white-space: normal;
+    line-height: 1.2;
+    word-break: break-word;
+    max-width: 60px;
+  }
+
+  .step-circle {
+    width: 34px;
+    height: 34px;
+    font-size: 0.8rem;
+    flex-shrink: 0;
+  }
+
+  /* Línea centrada verticalmente con el círculo */
+  .progress-linea {
+    flex: 1;
+    height: 2px;
+    align-self: flex-start;
+    margin-top: 17px; /* mitad del círculo (34px / 2) */
+    min-width: 8px;
+  }
+}

@@ -1,0 +1,794 @@
+.usuarios-container {
+  width: 100%;
+}
+
+.usuarios-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.btn-nuevo-usuario {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, var(--verde-oscuro), var(--verde-navbar));
+  color: white;
+  border: none;
+  padding: 11px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 0.95rem;
+  transition: all 0.2s;
+}
+
+.btn-nuevo-usuario:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+/* Grid */
+.usuarios-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 16px;
+}
+
+/* Card */
+.usuario-card {
+  background: rgba(255,255,255,0.88);
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: var(--sombra);
+  border: 1px solid var(--gris-borde);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  transition: transform 0.2s;
+  min-width: 0;
+  width: 100%;
+}
+
+.usuario-acciones {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.usuarios-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+  gap: 16px;
+}
+
+.usuario-card:hover {
+  transform: translateY(-3px);
+}
+
+/* Avatar */
+.usuario-avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--verde-oscuro), var(--verde-navbar));
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+/* Info */
+.usuario-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.usuario-info h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--negro);
+}
+
+.usuario-info p {
+  font-size: 0.82rem;
+  color: #888;
+}
+
+/* Badges */
+.rol-badge-card {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  margin-top: 4px;
+}
+
+.badge-gerente {
+  background: #fff3cd;
+  color: #856404;
+  border: 1px solid #ffc107;
+}
+
+.badge-vendedor {
+  background: #d1ecf1;
+  color: #0c5460;
+  border: 1px solid #bee5eb;
+}
+
+/* Acciones */
+.usuario-acciones {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.btn-editar {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: var(--verde-pastel);
+  color: var(--verde-oscuro);
+  border: 1px solid var(--verde-medio);
+  padding: 6px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.82rem;
+  transition: all 0.2s;
+}
+
+.btn-editar:hover {
+  background: var(--verde-oscuro);
+  color: white;
+}
+
+.btn-eliminar-u {
+  background: #f8d7da;
+  color: #e63946;
+  border: 1px solid #f5c6cb;
+  padding: 6px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.88rem;
+  transition: all 0.2s;
+}
+
+.btn-eliminar-u:hover {
+  background: #e63946;
+  color: white;
+}
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 300;
+  backdrop-filter: blur(4px);
+}
+
+.modal-usuario {
+  background: white;
+  border-radius: 18px;
+  width: 100%;
+  max-width: 480px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+  overflow: hidden;
+}
+
+.modal-usuario-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  background: linear-gradient(135deg, var(--verde-oscuro), var(--verde-navbar));
+  color: white;
+}
+
+.modal-usuario-header h2 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.btn-cerrar-modal {
+  background: rgba(255,255,255,0.2);
+  border: none;
+  color: white;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  transition: background 0.2s;
+}
+
+.btn-cerrar-modal:hover {
+  background: rgba(255,255,255,0.35);
+}
+
+.modal-usuario-body {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-height: 65vh;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--verde-medio) transparent;
+}
+
+.modal-usuario-body::-webkit-scrollbar {
+  width: 6px;
+}
+
+.modal-usuario-body::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.modal-usuario-body::-webkit-scrollbar-thumb {
+  background: var(--verde-medio);
+  border-radius: 10px;
+}
+
+.form-grupo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-grupo label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #666;
+}
+
+.form-grupo input {
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--gris-borde);
+  font-size: 0.92rem;
+  outline: none;
+  transition: border 0.2s;
+  background: white;
+  color: var(--negro);
+}
+
+.form-grupo input:focus {
+  border-color: var(--verde-medio);
+}
+
+/* Rol selector */
+.rol-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.rol-opcion {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border-radius: 10px;
+  border: 2px solid var(--gris-borde);
+  cursor: pointer;
+  transition: all 0.2s;
+  background: var(--gris-claro);
+}
+
+.rol-opcion:hover {
+  border-color: var(--verde-medio);
+  background: #f0faf4;
+}
+
+.rol-opcion.activo.vendedor {
+  border-color: #0c5460;
+  background: #d1ecf1;
+}
+
+.rol-opcion.activo.gerente {
+  border-color: #856404;
+  background: #fff3cd;
+}
+
+.rol-emoji {
+  font-size: none;
+}
+
+.rol-opcion div {
+  flex: 1;
+}
+
+.rol-opcion strong {
+  display: block;
+  font-size: 0.95rem;
+  color: var(--negro);
+}
+
+.rol-opcion p {
+  font-size: 0.78rem;
+  color: #888;
+  margin: 0;
+}
+
+.rol-check {
+  color: var(--verde-oscuro);
+  font-size: 1rem;
+}
+
+/* Mensaje */
+.modal-mensaje {
+  margin: 0 24px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.88rem;
+  text-align: center;
+}
+
+.modal-mensaje.success {
+  background: #d4edda;
+  color: #155724;
+}
+
+.modal-mensaje.error {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+/* Footer modal */
+.modal-usuario-footer {
+  display: flex;
+  gap: 10px;
+  padding: 16px 24px;
+  border-top: 1px solid var(--gris-borde);
+}
+
+.btn-cancelar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  border: 2px solid var(--gris-borde);
+  color: #666;
+  padding: 10px 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+}
+
+.btn-cancelar:hover {
+  border-color: #e63946;
+  color: #e63946;
+}
+
+.btn-guardar {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: linear-gradient(135deg, var(--verde-oscuro), var(--verde-navbar));
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 0.95rem;
+  transition: all 0.2s;
+}
+
+.btn-guardar:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.input-error {
+  border-color: #e63946 !important;
+  background: #fff5f5 !important;
+}
+
+.error-msg {
+  font-size: 0.78rem;
+  color: #e63946;
+  font-weight: 600;
+  margin-top: 2px;
+}
+
+.password-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-wrapper input {
+  width: 100%;
+  padding-right: 42px;
+}
+
+.btn-toggle-password {
+  position: absolute;
+  right: 12px;
+  background: none;
+  border: none;
+  color: #888;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+.btn-toggle-password:hover {
+  color: var(--verde-oscuro);
+}
+
+.password-checks {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 8px;
+  background: var(--gris-claro);
+  border-radius: 8px;
+  padding: 10px 14px;
+}
+
+.check-ok {
+  font-size: 0.78rem;
+  color: #40916c;
+  font-weight: 600;
+}
+
+.check-fail {
+  font-size: 0.78rem;
+  color: #e63946;
+  font-weight: 600;
+}
+
+.btn-permisos {
+  background: #fff3cd;
+  color: #856404;
+  border: 1px solid #ffc107;
+  padding: 6px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.82rem;
+  transition: all 0.2s;
+}
+
+.btn-permisos:hover {
+  background: #ffc107;
+  color: white;
+}
+
+.permisos-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.permiso-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 2px solid var(--gris-borde);
+  cursor: pointer;
+  transition: all 0.2s;
+  background: var(--gris-claro);
+}
+
+.permiso-item:hover {
+  border-color: var(--verde-medio);
+  background: #f0faf4;
+}
+
+.permiso-item.activo {
+  border-color: var(--verde-oscuro);
+  background: #d4edda;
+}
+
+.permiso-check {
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.permiso-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.permiso-info strong {
+  font-size: 0.92rem;
+  color: var(--negro);
+}
+
+.permiso-info span {
+  font-size: 0.78rem;
+  color: #888;
+}
+
+.usuarios-header-btns {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-gestionar-roles {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--verde-medio);
+  color: var(--verde-oscuro);
+  border: 1px solid var(--verde-oscuro);
+  color: white;
+  border: none;
+  padding: 11px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 0.95rem;
+  transition: all 0.2s;
+}
+
+.btn-gestionar-roles:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+.modal-roles {
+  max-width: 540px !important;
+}
+
+.roles-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.rol-fila {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--gris-borde);
+  background: var(--gris-claro);
+}
+
+.rol-fila-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.rol-fila-info strong {
+  font-size: 0.95rem;
+  color: var(--negro);
+}
+
+.rol-fila-info span {
+  font-size: 0.78rem;
+  color: #888;
+}
+
+.rol-permisos-count {
+  font-size: 0.75rem !important;
+  color: var(--verde-oscuro) !important;
+  font-weight: 600 !important;
+}
+
+.rol-fila-acciones {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.rol-base-badge {
+  font-size: 0.75rem;
+  padding: 3px 10px;
+  border-radius: 20px;
+  background: #fff3cd;
+  color: #856404;
+  border: 1px solid #ffc107;
+  font-weight: 600;
+}
+
+.btn-nuevo-rol {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, var(--verde-oscuro), var(--verde-navbar));
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+  width: 100%;
+  justify-content: center;
+}
+
+.btn-nuevo-rol:hover {
+  opacity: 0.9;
+}
+
+.badge-personalizado {
+  background: #e8f4f8;
+  color: #1a7fa8;
+  border: 1px solid #bee5eb;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+
+  .usuarios-container {
+    padding: 0 12px;
+  }
+
+  /* Header: apilar título arriba, botones abajo */
+  .usuarios-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .usuarios-header-btns {
+    width: 100%;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .btn-nuevo-usuario,
+  .btn-gestionar-roles {
+    width: 100%;
+    justify-content: center;
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+
+  /* Grid: 1 columna */
+  .usuarios-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  /* Card: reorganizar en columna */
+  .usuario-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px;
+  }
+
+  /* Avatar + info en fila */
+  .usuario-card-top {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+  }
+
+  .usuario-avatar {
+    width: 46px;
+    height: 46px;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+  }
+
+  .usuario-info h3 {
+    font-size: 0.95rem;
+  }
+
+  .usuario-info p {
+    font-size: 0.78rem;
+    word-break: break-all; /* evita que el email se salga */
+  }
+
+  /* Acciones: fila horizontal en mobile */
+  .usuario-acciones {
+    flex-direction: row;
+    width: 100%;
+    gap: 8px;
+  }
+
+  .btn-editar,
+  .btn-permisos {
+    flex: 1;
+    justify-content: center;
+    font-size: 0.8rem;
+    padding: 8px 6px;
+  }
+
+  .btn-eliminar-u {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+  }
+
+  /* Modal: ocupa casi toda la pantalla */
+  .modal-usuario {
+    max-width: 95vw;
+    margin: 0 10px;
+  }
+
+  .modal-usuario-header {
+    padding: 16px 18px;
+  }
+
+  .modal-usuario-header h2 {
+    font-size: 1rem;
+  }
+
+  .modal-usuario-body {
+    padding: 16px 18px;
+    max-height: 60vh;
+  }
+
+  .modal-usuario-footer {
+    padding: 12px 18px;
+    gap: 8px;
+  }
+
+  .btn-cancelar,
+  .btn-guardar {
+    font-size: 0.85rem;
+    padding: 9px 12px;
+  }
+
+  /* Rol selector más compacto */
+  .rol-opcion {
+    padding: 10px 12px;
+  }
+
+  .rol-opcion strong {
+    font-size: 0.88rem;
+  }
+
+  .rol-opcion p {
+    font-size: 0.74rem;
+  }
+
+  /* Permisos lista */
+  .permiso-item {
+    padding: 10px 12px;
+  }
+
+  .permiso-info strong {
+    font-size: 0.85rem;
+  }
+
+  .permiso-info span {
+    font-size: 0.74rem;
+  }
+}

@@ -1,0 +1,317 @@
+.navbar {
+  background: linear-gradient(90deg, #2d6a4f 0%, #40916c 50%, #52b788 100%);
+  padding: 0 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 60px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Brand */
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: white;
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  flex-shrink: 0;
+}
+
+.brand-logo {
+  height: 42px;
+  width: auto;
+  object-fit: contain;
+  border-radius: 6px;
+}
+
+/* Centro — ocupa el espacio sobrante y empuja links a la derecha */
+.navbar-center {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  justify-content: flex-end;
+}
+
+/* Flechas scroll */
+.navbar-scroll-btn {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.35);
+  color: white;
+  border-radius: 6px;
+  width: 26px;
+  height: 26px;
+  cursor: pointer;
+  flex-shrink: 0;
+  padding: 0;
+  font-size: 0.75rem;
+  transition: background 0.2s;
+}
+
+.navbar-scroll-btn:hover {
+  background: rgba(255,255,255,0.3);
+}
+
+/* Links */
+.navbar-links {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  margin: 0;
+  padding: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+  flex-wrap: nowrap;
+  flex-shrink: 1;
+  min-width: 0;
+}
+
+.navbar-links::-webkit-scrollbar {
+  display: none;
+}
+
+.navbar-links a {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: white;
+  text-decoration: none;
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 18px;
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+
+.navbar-links a:hover {
+  background: rgba(255,255,255,0.2);
+}
+
+.navbar-links a.active {
+  background: rgba(0,0,0,0.2);
+  font-weight: 700;
+}
+
+.navbar-links a svg {
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+/* Sesión derecha */
+.navbar-sesion {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  padding-left: 10px;
+  border-left: 1px solid rgba(255,255,255,0.3);
+}
+
+.usuario-nombre {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: white;
+  font-size: 0.8rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.rol-badge {
+  font-size: 0.75rem;
+  padding: 1px 6px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.2);
+  color: white;
+}
+
+.btn-logout {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(255,255,255,0.2);
+  color: white;
+  border: 1px solid rgba(255,255,255,0.4);
+  padding: 5px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.8rem;
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+
+.btn-logout:hover {
+  background: rgba(255,255,255,0.35);
+}
+
+.btn-login {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: white;
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.88rem;
+  background: rgba(255,255,255,0.15);
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+
+.btn-login:hover {
+  background: rgba(255,255,255,0.3);
+}
+
+/* Hamburguesa — oculta en desktop */
+.navbar-hamburguesa {
+  display: none;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.35);
+  color: white;
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 6px 8px;
+  border-radius: 6px;
+  transition: background 0.2s;
+  flex-shrink: 0;
+}
+
+.navbar-hamburguesa:hover {
+  background: rgba(255,255,255,0.3);
+}
+
+/* Menú mobile */
+.navbar-mobile-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: fixed;
+  top: 60px;
+  right: 0;
+  width: 240px;
+  height: calc(100vh - 60px);
+  background: linear-gradient(180deg, #2d6a4f, #40916c);
+  padding: 16px 12px;
+  gap: 4px;
+  overflow-y: auto;
+  box-shadow: -4px 0 20px rgba(0,0,0,0.25);
+  z-index: 100;
+  list-style: none;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.navbar-mobile-menu li {
+  width: 100%;
+}
+
+.navbar-mobile-menu a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: white;
+  text-decoration: none;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-weight: 500;
+  font-size: 0.92rem;
+  transition: background 0.2s;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.navbar-mobile-menu a:hover {
+  background: rgba(255,255,255,0.2);
+}
+
+.navbar-mobile-menu a.active {
+  background: rgba(0,0,0,0.2);
+  font-weight: 700;
+}
+
+.navbar-mobile-menu a svg {
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+/* Sesión mobile */
+.navbar-sesion-mobile {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border-top: 1px solid rgba(255,255,255,0.3);
+  padding-top: 12px;
+  margin-top: 4px;
+  width: 100%;
+}
+
+.navbar-sesion-mobile .usuario-nombre {
+  font-size: 0.88rem;
+}
+
+.navbar-sesion-mobile .btn-logout {
+  width: 100%;
+  justify-content: center;
+  padding: 8px;
+}
+
+.navbar-sesion-mobile .btn-login {
+  width: 100%;
+  justify-content: center;
+  padding: 10px;
+}
+
+/* Overlay */
+.navbar-overlay {
+  position: fixed;
+  inset: 0;
+  top: 60px;
+  background: rgba(0,0,0,0.4);
+  z-index: 99;
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media (max-width: 1100px) {
+  .navbar-scroll-btn {
+    display: flex;
+  }
+}
+
+@media (max-width: 700px) {
+  .navbar-center {
+    display: none;
+  }
+
+  .navbar-sesion {
+    display: none;
+  }
+
+  .navbar-hamburguesa {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+  }
+
+  .brand-texto {
+    display: none;
+  }
+}

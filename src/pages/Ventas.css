@@ -1,0 +1,291 @@
+.ventas-container {
+  width: 100%;
+}
+
+.ventas-filtros {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: rgba(255,255,255,0.85);
+  padding: 16px 20px;
+  border-radius: 12px;
+  box-shadow: var(--sombra);
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.filtro-btns {
+  display: flex;
+  gap: 8px;
+}
+
+.filtro-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: 2px solid var(--verde-medio);
+  background: transparent;
+  color: var(--verde-oscuro);
+  font-weight: 600;
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.filtro-btn:hover,
+.filtro-btn.activo {
+  background: var(--verde-oscuro);
+  color: white;
+  border-color: var(--verde-oscuro);
+}
+
+.ventas-search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--gris-claro);
+  border-radius: 8px;
+  padding: 8px 14px;
+  border: 1px solid var(--gris-borde);
+  flex: 1;
+}
+
+.ventas-search input {
+  border: none;
+  color:#333;
+  background: transparent;
+  outline: none;
+  font-size: 0.9rem;
+  width: 100%;
+}
+
+.ventas-total {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.95rem;
+  color: var(--negro);
+  margin-left: auto;
+}
+
+.ventas-total strong {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--verde-oscuro);
+}
+
+/* Resumen */
+.ventas-resumen {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.venta-resumen-card {
+  background: rgba(255,255,255,0.85);
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: var(--sombra);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.vr-numero {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--verde-oscuro);
+}
+
+.vr-label {
+  font-size: 0.85rem;
+  color: #666;
+}
+
+/* Lista */
+.ventas-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.venta-card {
+  background: rgba(255,255,255,0.85);
+  border-radius: 12px;
+  padding: 18px;
+  box-shadow: var(--sombra);
+  border: 1px solid var(--gris-borde);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.venta-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.venta-id {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.venta-id span:first-child {
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--verde-oscuro);
+}
+
+.venta-fecha {
+  font-size: 0.8rem !important;
+  color: #888 !important;
+  font-weight: 400 !important;
+}
+
+.venta-total {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--verde-oscuro);
+}
+
+.venta-cliente {
+  font-size: 0.88rem;
+  color: #555;
+  padding: 8px 12px;
+  background: var(--gris-claro);
+  border-radius: 8px;
+}
+
+.venta-productos {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.venta-producto-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  padding: 6px 10px;
+  border-radius: 6px;
+  background: #f9f9f9;
+  border: 1px solid var(--gris-borde);
+}
+
+.venta-producto-item span:first-child {
+  font-weight: 600;
+  flex: 1;
+}
+
+.sin-ventas {
+  text-align: center;
+  padding: 60px;
+  color: #888;
+  font-size: 1.1rem;
+  background: rgba(255,255,255,0.7);
+  border-radius: 12px;
+}
+@media (max-width: 768px) {
+
+  .ventas-container {
+    padding: 16px 12px;
+  }
+
+  .page-title {
+    font-size: 1.4rem;
+    margin-bottom: 16px;
+  }
+
+  /* Filtros: apilar en columna */
+  .ventas-filtros {
+    flex-direction: column;
+    gap: 12px;
+    padding: 16px;
+  }
+
+  .filtro-btns {
+    display: flex;
+    width: 100%;
+    gap: 8px;
+  }
+
+  .filtro-btn {
+    flex: 1;
+    font-size: 0.82rem;
+    padding: 8px 6px;
+    text-align: center;
+  }
+
+  /* Buscador y total en fila */
+  .ventas-search {
+    width: 100%;
+  }
+
+  .ventas-search input {
+    width: 100%;
+  }
+
+  .ventas-total {
+    width: 100%;
+    text-align: right;
+    font-size: 0.95rem;
+  }
+
+  /* Resumen cards: 1 columna para que no se corten */
+  .ventas-resumen {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .venta-resumen-card {
+    padding: 16px;
+  }
+
+  .vr-numero {
+    font-size: 1.6rem;
+  }
+
+  .vr-label {
+    font-size: 0.85rem;
+  }
+
+  /* Cards de venta */
+  .venta-card {
+    padding: 14px;
+  }
+
+  .venta-header {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .venta-id span {
+    font-size: 0.9rem;
+  }
+
+  .venta-fecha {
+    font-size: 0.78rem;
+  }
+
+  .venta-total {
+    font-size: 1.1rem;
+    align-self: flex-start;
+  }
+
+  .venta-cliente {
+    font-size: 0.85rem;
+  }
+
+  .venta-producto-item {
+    font-size: 0.82rem;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+}

@@ -1,0 +1,584 @@
+.inventario-container {
+  width: 100%;
+}
+
+/* Resumen cards */
+.resumen-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  margin-bottom: 25px;
+}
+
+.resumen-card {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 20px;
+  border-radius: 12px;
+  color: white;
+  box-shadow: var(--sombra);
+}
+
+.resumen-card .resumen-label {
+  font-size: 0.80rem;
+  color: white !important;
+  opacity: 1 !important;
+  font-weight: 500;
+}
+
+.resumen-card .resumen-numero {
+  font-size: 2rem;
+  font-weight: 600;
+  color: white !important;
+  opacity: 1 !important;
+}
+
+.resumen-card .resumen-icon {
+  font-size: 2rem;
+  color: white !important;
+  opacity: 0.7 !important;
+}
+
+.resumen-card.verde { background: linear-gradient(135deg, #40916c, #52b788); }
+.resumen-card.amarillo { background: linear-gradient(135deg, #e9c46a, #f4a261); }
+.resumen-card.rojo { background: linear-gradient(135deg, #e63946, #c1121f); }
+
+.resumen-icon {
+  font-size: 2rem;
+  opacity: 0.9;
+}
+
+.resumen-numero {
+  display: block;
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.resumen-label {
+  font-size: 0.85rem;
+  opacity: 0.9;
+
+}
+
+/* Buscador */
+.inv-search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255,255,255,0.85);
+  border-radius: 8px;
+  padding: 10px 15px;
+  border: 1px solid var(--gris-borde);
+  margin-bottom: 20px;
+  box-shadow: var(--sombra);
+}
+
+.inv-search input {
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  width: 100%;
+  background: transparent;
+  color: var(--negro);
+}
+
+/* Tabla */
+.tabla-wrapper {
+  background: var(--blanco);
+  border-radius: 12px;
+  box-shadow: var(--sombra);
+  overflow: hidden;
+  border: 1px solid var(--gris-borde);
+}
+
+.inv-tabla {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.inv-tabla thead {
+  background: linear-gradient(135deg, var(--verde-oscuro), var(--verde-navbar));
+  color: white;
+}
+
+.inv-tabla th {
+  padding: 14px 16px;
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.inv-tabla td {
+  padding: 13px 16px;
+  border-bottom: 1px solid var(--gris-borde);
+  font-size: 0.92rem;
+  color: var(--negro);
+  text-align: center;
+  vertical-align: middle;
+}
+
+.inv-tabla tbody tr:hover {
+  background-color: #f0faf4;
+}
+
+.fila-agotada {
+  background-color: #fff5f5 !important;
+}
+
+.td-nombre {
+  font-weight: 600;
+  text-align: center;
+}
+
+.td-stock {
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--verde-oscuro);
+}
+
+/* Botón movimiento */
+.btn-movimiento {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background-color: var(--verde-pastel);
+  color: var(--verde-oscuro);
+  border: 2px solid var(--verde-medio);
+  padding: 7px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.85rem;
+  transition: all 0.2s;
+  margin: 0 auto;
+}
+
+.btn-movimiento:hover {
+  background-color: var(--verde-oscuro);
+  color: white;
+  border-color: var(--verde-oscuro);
+}
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+  backdrop-filter: blur(3px);
+}
+
+.modal {
+  background: var(--blanco);
+  border-radius: 16px;
+  padding: 30px;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+}
+
+.modal h2 {
+  font-size: 1.3rem;
+  color: var(--verde-oscuro);
+  margin-bottom: 12px;
+}
+
+.modal-producto {
+  font-size: 1rem;
+  color: var(--negro);
+  margin-bottom: 4px;
+}
+
+.modal-stock {
+  font-size: 0.95rem;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.modal-form label {
+  font-weight: 600;
+  color: var(--negro);
+  font-size: 0.9rem;
+}
+
+.tipo-btns {
+  display: flex;
+  gap: 8px;
+}
+
+.tipo-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 9px;
+  border-radius: 8px;
+  border: 2px solid var(--gris-borde);
+  background: var(--gris-claro);
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.85rem;
+  transition: all 0.2s;
+}
+
+.tipo-btn.activo.tipo-compra { background: #d8f3dc; border-color: #40916c; color: #40916c; }
+.tipo-btn.activo.tipo-venta { background: #f8d7da; border-color: #e63946; color: #e63946; }
+.tipo-btn.activo.tipo-ajuste { background: #fff3cd; border-color: #e9c46a; color: #856404; }
+
+.modal-input {
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--gris-borde);
+  font-size: 1rem;
+  outline: none;
+  transition: border 0.2s;
+}
+
+.modal-input:focus {
+  border-color: var(--verde-medio);
+}
+
+.modal-mensaje {
+  text-align: center;
+  font-weight: 600;
+  margin-bottom: 12px;
+  font-size: 0.95rem;
+}
+
+.modal-acciones {
+  display: flex;
+  gap: 10px;
+}
+
+.modal-acciones button {
+  flex: 1;
+  padding: 11px;
+}
+
+/* REPORTES */
+.reportes-section {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.reportes-titulo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--verde-oscuro);
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--verde-pastel);
+}
+
+.reportes-filtros {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: rgba(255,255,255,0.85);
+  padding: 16px 20px;
+  border-radius: 12px;
+  box-shadow: var(--sombra);
+  flex-wrap: wrap;
+}
+
+.filtro-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.filtro-item label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #888;
+  text-transform: uppercase;
+}
+
+.filtro-item select {
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--gris-borde);
+  font-size: 0.9rem;
+  outline: none;
+  cursor: pointer;
+  background: white;
+  color: var(--negro);
+}
+
+.filtro-total {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1rem;
+  color: var(--negro);
+}
+
+.filtro-total strong {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--verde-oscuro);
+}
+
+.reportes-graficas {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.grafica-card {
+  background: rgba(255,255,255,0.92);
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: var(--sombra);
+  border: 1px solid rgba(255,255,255,0.9);
+}
+
+.grafica-card h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--verde-oscuro);
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--verde-pastel);
+}
+
+.grafica-full {
+  grid-column: 1 / -1;
+}
+
+/* Pie wrapper */
+.pie-wrapper {
+  width: 100%;
+  max-width: 340px;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+/* Resumen ingresos */
+.resumen-ingresos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.ingreso-item {
+  background: rgba(255,255,255,0.9);
+  border-radius: 10px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  text-align: center;
+  border: 1px solid var(--gris-borde);
+  transition: transform 0.2s;
+}
+
+.ingreso-item:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--sombra);
+}
+
+.ingreso-label {
+  font-size: 0.72rem;
+  color: #888;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.ingreso-valor {
+  font-size: 1.3rem;
+  font-weight: 800;
+}
+
+/* Tabla ventas recientes */
+.ventas-recientes-tabla {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 8px;
+}
+
+.ventas-recientes-tabla thead {
+  background: linear-gradient(135deg, var(--verde-oscuro), var(--verde-navbar));
+  color: white;
+}
+
+.ventas-recientes-tabla th {
+  padding: 10px 14px;
+  text-align: center;
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.ventas-recientes-tabla td {
+  padding: 10px 14px;
+  text-align: center;
+  border-bottom: 1px solid var(--gris-borde);
+  font-size: 0.88rem;
+  color: var(--negro);
+}
+
+.ventas-recientes-tabla tbody tr:hover {
+  background: #f0faf4;
+}
+
+.sin-datos {
+  text-align: center;
+  padding: 40px;
+  color: #888;
+  font-size: 1rem;
+}
+
+.ranking-color-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.ranking-nombre {
+  flex: 1;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--negro);
+}
+
+.ranking-cantidad {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--verde-oscuro);
+}
+
+@media (max-width: 768px) {
+  .reportes-graficas {
+    grid-template-columns: 1fr;
+  }
+
+  .resumen-ingresos {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+
+  .inventario-container {
+    padding: 0 12px;
+  }
+
+  /* Resumen cards */
+  .resumen-cards {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  /* TABLA — ocultar columnas que no caben y hacer scroll horizontal */
+  .tabla-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .inv-tabla {
+    min-width: 420px; /* fuerza scroll en vez de aplastar columnas */
+  }
+
+  .inv-tabla th,
+  .inv-tabla td {
+    padding: 10px 8px;
+    font-size: 0.78rem;
+  }
+
+  /* Ocultar columnas menos importantes en mobile */
+  .inv-tabla th:nth-child(5),
+  .inv-tabla td:nth-child(5) {
+    display: none; /* ocultar Stock Mínimo */
+  }
+
+  .btn-movimiento {
+    padding: 6px 8px;
+    font-size: 0.75rem;
+    gap: 4px;
+  }
+
+  /* REPORTES */
+  .reportes-filtros {
+    flex-direction: column;
+    gap: 12px;
+    padding: 14px;
+  }
+
+  .filtro-total {
+    margin-left: 0;
+    width: 100%;
+    justify-content: space-between;
+    border-top: 1px solid #ddd;
+    padding-top: 10px;
+  }
+
+  .reportes-graficas {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .grafica-card {
+    padding: 14px 12px;
+  }
+
+  .grafica-card h3 {
+    font-size: 0.9rem;
+  }
+
+  /* Resumen ingresos — 2 columnas */
+  .resumen-ingresos {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .ingreso-valor {
+    font-size: 1rem;
+  }
+
+  .ingreso-label {
+    font-size: 0.68rem;
+  }
+
+  /* Tabla ventas recientes — scroll horizontal */
+  .ventas-recientes-tabla {
+    min-width: 420px;
+  }
+
+  .grafica-full {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .ventas-recientes-tabla th,
+  .ventas-recientes-tabla td {
+    padding: 8px 10px;
+    font-size: 0.78rem;
+  }
+
+  /* Pie chart más pequeño */
+  .pie-wrapper {
+    max-width: 260px;
+  }
+}
