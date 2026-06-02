@@ -24,6 +24,12 @@ function App() {
     <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
       <div className="app-wrapper">
         <Navbar />
+
+        {/* 🔥 CAMBIO DE PRUEBA PARA DEPLOY */}
+        <h1 style={{ textAlign: "center", color: "red" }}>
+          🔥 CAMBIO REAL EN FRONTEND 2026 🔥
+        </h1>
+
         <main className="main-content">
           <Routes>
             {/* Público */}
@@ -36,7 +42,8 @@ function App() {
             <Route path="/sin-permiso" element={<SinPermiso />} />
             <Route path="/compras" element={<Compras />} />
             <Route path="/registrarse" element={<Registrarse />} />
-            {/* Ventas — vendedor con permiso o gerente */}
+
+            {/* Ventas */}
             <Route path="/ventas" element={
               <RoleRoute roles={['vendedor', 'gerente']} permiso="ventas">
                 <Ventas />
@@ -56,7 +63,7 @@ function App() {
               </RoleRoute>
             } />
 
-            {/* Gerente o vendedor con permiso */}
+            {/* Gerente o vendedor */}
             <Route path="/categorias" element={
               <RoleRoute roles={['gerente', 'vendedor']} permiso="categorias">
                 <Categorias />
@@ -76,6 +83,7 @@ function App() {
             } />
           </Routes>
         </main>
+
         <Footer />
       </div>
     </BrowserRouter>
