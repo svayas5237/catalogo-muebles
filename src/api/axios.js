@@ -1,9 +1,9 @@
 import axios from 'axios';
 
 const API = axios.create({
-  baseURL: import.meta.env.VITE_API_URL,
+  baseURL: 'https://ecologymuebles-api-dxd2cdezeyfhasau.canadacentral-01.azurewebsites.net/api',
 });
 
-export const BASE_URL = import.meta.env.VITE_API_URL;
+export const BASE_URL = 'https://ecologymuebles-api-dxd2cdezeyfhasau.canadacentral-01.azurewebsites.net/api';
 
 export default API;
