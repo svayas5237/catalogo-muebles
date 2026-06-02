@@ -15,6 +15,8 @@ import Usuarios from './pages/Usuarios';
 import Categorias from './pages/Categorias';
 import RegistroMueble from './pages/RegistroMueble';
 import GestionMuebles from './pages/GestionMuebles';
+import Registrarse from './pages/Registrarse';
+import Compras from './pages/Compras';
 import './App.css';
 
 function App() {
@@ -32,7 +34,8 @@ function App() {
             <Route path="/checkout" element={<Checkout />} />
             <Route path="/login" element={<Login />} />
             <Route path="/sin-permiso" element={<SinPermiso />} />
-
+            <Route path="/compras" element={<Compras />} />
+            <Route path="/registrarse" element={<Registrarse />} />
             {/* Ventas — vendedor con permiso o gerente */}
             <Route path="/ventas" element={
               <RoleRoute roles={['vendedor', 'gerente']} permiso="ventas">

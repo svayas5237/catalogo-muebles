@@ -2,7 +2,9 @@
   width: 100%;
 }
 
-/* Resumen cards */
+/* =========================================
+   RESUMEN CARDS (Tarjetas Superiores)
+========================================= */
 .resumen-cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -32,37 +34,24 @@
   font-weight: 600;
   color: white !important;
   opacity: 1 !important;
+  display: block;
+  line-height: 1;
 }
 
 .resumen-card .resumen-icon {
   font-size: 2rem;
   color: white !important;
-  opacity: 0.7 !important;
+  opacity: 0.9 !important;
 }
 
 .resumen-card.verde { background: linear-gradient(135deg, #40916c, #52b788); }
 .resumen-card.amarillo { background: linear-gradient(135deg, #e9c46a, #f4a261); }
 .resumen-card.rojo { background: linear-gradient(135deg, #e63946, #c1121f); }
 
-.resumen-icon {
-  font-size: 2rem;
-  opacity: 0.9;
-}
 
-.resumen-numero {
-  display: block;
-  font-size: 2rem;
-  font-weight: 800;
-  line-height: 1;
-}
-
-.resumen-label {
-  font-size: 0.85rem;
-  opacity: 0.9;
-
-}
-
-/* Buscador */
+/* =========================================
+   BUSCADOR E INVENTARIO
+========================================= */
 .inv-search {
   display: flex;
   align-items: center;
@@ -84,12 +73,12 @@
   color: var(--negro);
 }
 
-/* Tabla */
+/* Tabla Principal */
 .tabla-wrapper {
   background: var(--blanco);
   border-radius: 12px;
   box-shadow: var(--sombra);
-  overflow: hidden;
+  overflow-x: auto; /* Permite el scroll horizontal */
   border: 1px solid var(--gris-borde);
 }
 
@@ -128,6 +117,10 @@
   background-color: #fff5f5 !important;
 }
 
+.fila-entregada {
+  background-color: #f0fdf4 !important;
+}
+
 .td-nombre {
   font-weight: 600;
   text-align: center;
@@ -139,7 +132,36 @@
   color: var(--verde-oscuro);
 }
 
-/* Botón movimiento */
+.td-fecha {
+  font-size: 0.85rem;
+  color: #555;
+  white-space: nowrap;
+}
+
+/* Insignias (Badges) */
+.badge-entregado {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.entregado-si {
+  background: #d4edda;
+  color: #155724;
+  border: 1px solid #b7e4c7;
+}
+
+.entregado-no {
+  background: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+/* Botón movimiento tabla */
 .btn-movimiento {
   display: flex;
   align-items: center;
@@ -154,6 +176,7 @@
   font-size: 0.85rem;
   transition: all 0.2s;
   margin: 0 auto;
+  white-space: nowrap;
 }
 
 .btn-movimiento:hover {
@@ -162,7 +185,10 @@
   border-color: var(--verde-oscuro);
 }
 
-/* Modal */
+
+/* =========================================
+   MODAL DE MOVIMIENTOS
+========================================= */
 .modal-overlay {
   position: fixed;
   inset: 0;
@@ -269,12 +295,27 @@
   padding: 11px;
 }
 
-/* REPORTES */
+
+/* =========================================
+   REPORTES Y GRÁFICAS
+========================================= */
 .reportes-section {
   margin-top: 30px;
   display: flex;
   flex-direction: column;
   gap: 20px;
+}
+
+/* ENCABEZADO: Título a la izquierda, botones a la derecha extrema */
+.reportes-header {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap; 
+  width: 100%;
+  gap: 15px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid var(--verde-pastel);
+  margin-bottom: 10px;
 }
 
 .reportes-titulo {
@@ -284,10 +325,42 @@
   font-size: 1.4rem;
   font-weight: 800;
   color: var(--verde-oscuro);
-  padding-bottom: 10px;
-  border-bottom: 2px solid var(--verde-pastel);
+  margin: 0;
 }
 
+/* Esto envía los botones al final de la derecha */
+.reportes-export-btns {
+  display: flex;
+  gap: 15px;
+  margin-left: auto;
+}
+
+/* BOTONES PDF Y EXCEL */
+.btn-export {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: white;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.btn-export:hover { 
+  transform: translateY(-2px); 
+  box-shadow: 0 6px 12px rgba(0,0,0,0.2); 
+}
+
+.btn-export.pdf { background: linear-gradient(135deg, #ee505e, #bc4145) !important; }
+.btn-export.excel { background: linear-gradient(135deg, #3fb1a3, #287c72) !important; }
+
+/* FILTROS */
 .reportes-filtros {
   display: flex;
   align-items: center;
@@ -338,10 +411,13 @@
   color: var(--verde-oscuro);
 }
 
+/* RESPONSIVIDAD DE GRÁFICAS - El truco para evitar el aplastamiento */
 .reportes-graficas {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  /* Se apilan automáticamente si la pantalla es menor a 350px */
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 20px;
+  width: 100%;
 }
 
 .grafica-card {
@@ -350,6 +426,7 @@
   padding: 20px;
   box-shadow: var(--sombra);
   border: 1px solid rgba(255,255,255,0.9);
+  width: 100%;
 }
 
 .grafica-card h3 {
@@ -365,12 +442,16 @@
   grid-column: 1 / -1;
 }
 
-/* Pie wrapper */
+/* CAJA DE LA GRÁFICA CIRCULAR */
 .pie-wrapper {
+  position: relative;
   width: 100%;
-  max-width: 340px;
+  height: 300px; /* Altura generosa para que el texto y círculo respiren */
   margin: 0 auto;
-  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: visible; /* Garantiza que las letras no se corten */
 }
 
 /* Resumen ingresos */
@@ -449,136 +530,125 @@
   font-size: 1rem;
 }
 
-.ranking-color-dot {
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  flex-shrink: 0;
+
+/* ==================================================== */
+/* ESTILIZACIÓN DE LA BARRA DE DESPLAZAMIENTO (SCROLL)  */
+/* ==================================================== */
+.tabla-wrapper::-webkit-scrollbar,
+.grafica-full::-webkit-scrollbar {
+  height: 12px;
 }
 
-.ranking-nombre {
-  flex: 1;
-  font-size: 0.88rem;
-  font-weight: 600;
-  color: var(--negro);
+.tabla-wrapper::-webkit-scrollbar-track,
+.grafica-full::-webkit-scrollbar-track {
+  background: #eaf4f0; 
+  border-radius: 0 0 12px 12px;
 }
 
-.ranking-cantidad {
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: var(--verde-oscuro);
+.tabla-wrapper::-webkit-scrollbar-thumb,
+.grafica-full::-webkit-scrollbar-thumb {
+  background: #74c69d; 
+  border-radius: 10px;
+  border: 2px solid #eaf4f0; 
 }
+
+.tabla-wrapper::-webkit-scrollbar-thumb:hover,
+.grafica-full::-webkit-scrollbar-thumb:hover {
+  background: #52b788; 
+}
+
+.entregado-parcial {
+  background: #fff3cd;
+  color: #856404;
+  border: 1px solid #ffc107;
+}
+
+/* ==================================================== */
+/* MEDIA QUERIES (Celulares y Tablets)                  */
+/* ==================================================== */
 
 @media (max-width: 768px) {
-  .reportes-graficas {
-    grid-template-columns: 1fr;
-  }
-
-  .resumen-ingresos {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 768px) {
-
   .inventario-container {
     padding: 0 12px;
   }
 
-  /* Resumen cards */
   .resumen-cards {
     grid-template-columns: 1fr;
     gap: 10px;
   }
 
-  /* TABLA — ocultar columnas que no caben y hacer scroll horizontal */
   .tabla-wrapper {
-    overflow-x: auto;
     -webkit-overflow-scrolling: touch;
   }
-
+  
   .inv-tabla {
-    min-width: 420px; /* fuerza scroll en vez de aplastar columnas */
+    min-width: 800px; 
   }
-
-  .inv-tabla th,
-  .inv-tabla td {
+  
+  .inv-tabla th, .inv-tabla td {
     padding: 10px 8px;
-    font-size: 0.78rem;
+    font-size: 0.8rem;
   }
-
-  /* Ocultar columnas menos importantes en mobile */
-  .inv-tabla th:nth-child(5),
-  .inv-tabla td:nth-child(5) {
-    display: none; /* ocultar Stock Mínimo */
+  
+  .inv-tabla th:nth-child(5), .inv-tabla td:nth-child(5) {
+    display: none; 
   }
-
+  
   .btn-movimiento {
-    padding: 6px 8px;
-    font-size: 0.75rem;
-    gap: 4px;
+    padding: 6px 12px;
+    font-size: 0.8rem;
   }
 
-  /* REPORTES */
+  /* El encabezado de reportes en celular */
+  .reportes-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  /* En celular, los botones ya no van flotando, se acomodan abajo del título */
+  .reportes-export-btns {
+    margin-left: 0;
+    width: 100%;
+    justify-content: flex-start;
+  }
+
   .reportes-filtros {
     flex-direction: column;
+    align-items: stretch;
     gap: 12px;
     padding: 14px;
   }
-
+  
   .filtro-total {
     margin-left: 0;
-    width: 100%;
     justify-content: space-between;
     border-top: 1px solid #ddd;
     padding-top: 10px;
   }
 
-  .reportes-graficas {
-    grid-template-columns: 1fr;
-    gap: 14px;
-  }
-
   .grafica-card {
     padding: 14px 12px;
   }
-
-  .grafica-card h3 {
-    font-size: 0.9rem;
+  
+  .pie-wrapper {
+    height: auto;
+    min-height: 250px;
   }
 
-  /* Resumen ingresos — 2 columnas */
   .resumen-ingresos {
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
   }
-
-  .ingreso-valor {
-    font-size: 1rem;
-  }
-
-  .ingreso-label {
-    font-size: 0.68rem;
-  }
-
-  /* Tabla ventas recientes — scroll horizontal */
-  .ventas-recientes-tabla {
-    min-width: 420px;
-  }
+  
+  .ingreso-valor { font-size: 1rem; }
+  .ingreso-label { font-size: 0.68rem; }
 
   .grafica-full {
     overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
   }
-
-  .ventas-recientes-tabla th,
-  .ventas-recientes-tabla td {
-    padding: 8px 10px;
-    font-size: 0.78rem;
-  }
-
-  /* Pie chart más pequeño */
-  .pie-wrapper {
-    max-width: 260px;
+  
+  .ventas-recientes-tabla {
+    min-width: 500px;
   }
 }

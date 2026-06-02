@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import API from '../api/axios';
 import { FaEnvelope, FaLock, FaSignInAlt } from 'react-icons/fa';
@@ -69,9 +69,18 @@ function Login() {
             {loading ? 'Ingresando...' : 'Ingresar'}
           </button>
         </form>
-        <p className="login-footer">
-          Solo el personal autorizado puede acceder al inventario.
-        </p>
+        
+        {/* Nuevo Footer con el enlace de Registro */}
+        <div className="login-footer">
+          <p style={{ marginBottom: '10px' }}>Solo el personal autorizado puede acceder al inventario.</p>
+          <p>
+            ¿No tienes cuenta? <br/>
+            <Link to="/registrarse" style={{ color: 'var(--verde-oscuro)', fontWeight: 'bold', textDecoration: 'none' }}>
+              Regístrate aquí
+            </Link>
+          </p>
+        </div>
+        
       </div>
     </div>
   );

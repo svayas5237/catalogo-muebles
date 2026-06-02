@@ -1,0 +1,237 @@
+.mis-compras-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.titulo-compras {
+  font-size: 2rem;
+  color: var(--verde-oscuro);
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: 800;
+}
+
+.lista-compras {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.tarjeta-compra {
+  background: white;
+  border-radius: 16px;
+  box-shadow: var(--sombra);
+  overflow: hidden;
+  border: 1px solid var(--gris-borde);
+}
+
+.compra-header {
+  background: var(--verde-oscuro);
+  color: white;
+  padding: 16px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.compra-fecha {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+}
+
+.compra-orden {
+  font-weight: 800;
+  font-size: 1.1rem;
+}
+
+.compra-total {
+  font-weight: 800;
+  font-size: 1.2rem;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 6px 14px;
+  border-radius: 8px;
+}
+
+.compra-body {
+  padding: 24px;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 24px;
+}
+
+.compra-datos-envio {
+  background: var(--gris-claro);
+  padding: 20px;
+  border-radius: 12px;
+  height: fit-content;
+}
+
+.compra-datos-envio h3, .compra-productos h3 {
+  color: var(--verde-oscuro);
+  margin-bottom: 16px;
+  font-size: 1.1rem;
+  border-bottom: 2px solid var(--verde-pastel);
+  padding-bottom: 8px;
+}
+
+.compra-datos-envio p {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #555;
+  margin-bottom: 10px;
+  font-size: 0.95rem;
+}
+
+.compra-productos {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.producto-item {
+  display: flex;
+  gap: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #eee;
+}
+
+.producto-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.producto-img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 1px solid var(--gris-borde);
+}
+
+.producto-info {
+  flex: 1;
+}
+
+.producto-info h4 {
+  margin: 0 0 4px 0;
+  color: var(--negro);
+  font-size: 1.05rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cantidad-badge {
+  background: var(--verde-pastel);
+  color: var(--verde-oscuro);
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.precio-unitario {
+  color: #666;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.detalles-tecnicos {
+  background: #f8fdf9;
+  border: 1px dashed var(--verde-medio);
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  color: #555;
+}
+
+.detalles-tecnicos p {
+  margin-bottom: 4px;
+}
+
+.detalles-tecnicos p:last-child {
+  margin-bottom: 0;
+}
+
+.compras-loading, .compras-error, .compras-vacio {
+  text-align: center;
+  padding: 60px 20px;
+  font-size: 1.2rem;
+  color: #666;
+  font-weight: 600;
+}
+
+.compras-error {
+  color: #e63946;
+}
+
+.buscador-invitado {
+  background: white;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: var(--sombra);
+  margin-bottom: 30px;
+  text-align: center;
+  border: 1px solid var(--gris-borde);
+}
+.buscador-invitado p {
+  color: var(--verde-oscuro);
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+.buscador-input-group {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+.buscador-input-group input {
+  flex: 1;
+  padding: 12px 16px;
+  border: 2px solid var(--verde-medio);
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: #d4d1d1 !important; /* Fuerza el fondo a ser blanco puro */
+  color: #333333 !important; /* Fuerza el texto a ser gris oscuro/negro */
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.buscador-input-group input:focus {
+  border-color: var(--verde-oscuro);
+  box-shadow: 0 0 5px rgba(64, 145, 108, 0.3);
+}
+.buscador-input-group button {
+  background: var(--verde-oscuro);
+  color: white;
+  border: none;
+  padding: 0 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+@media (max-width: 768px) {
+  .compra-body {
+    grid-template-columns: 1fr;
+  }
+  
+  .compra-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .compra-total {
+    align-self: flex-end;
+  }
+}

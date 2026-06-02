@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { FaBoxes, FaShoppingCart, FaPlusSquare, FaStore, FaHome, FaSignOutAlt, FaUserCircle, FaSignInAlt, FaReceipt, FaUserCog, FaThList, FaBars, FaTimes, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import { FaBoxes, FaShoppingCart, FaShoppingBag, FaPlusSquare, FaStore, FaHome, FaSignOutAlt, FaUserCircle, FaSignInAlt, FaReceipt, FaUserCog, FaThList, FaBars, FaTimes, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import { useAuth } from '../context/AuthContext';
 import logo from '../assets/logo.png';
 import './Navbar.css';
@@ -24,34 +24,37 @@ function Navbar() {
     }
   };
 
+  // Simplificamos la lista: quitamos el bloqueo de 'acceso' estricto
   const links = [
     { to: '/', label: 'Inicio', icon: <FaHome />, acceso: 'todos', permiso: 'inicio' },
     { to: '/catalogo', label: 'Catálogo', icon: <FaStore />, acceso: 'todos', permiso: 'catalogo' },
     { to: '/carrito', label: 'Carrito', icon: <FaShoppingCart />, acceso: 'todos', permiso: 'carrito' },
-    { to: '/ventas', label: 'Ventas', icon: <FaReceipt />, acceso: ['vendedor', 'gerente'], permiso: 'ventas' },
-    { to: '/inventario', label: 'Inventario', icon: <FaBoxes />, acceso: ['gerente'], permiso: 'inventario' },
-    { to: '/usuarios', label: 'Usuarios', icon: <FaUserCog />, acceso: ['gerente'], permiso: 'usuarios' },
-    { to: '/categorias', label: 'Categorías', icon: <FaThList />, acceso: ['vendedor', 'gerente'], permiso: 'categorias' },
-    { to: '/registro-mueble', label: 'Nuevo Mueble', icon: <FaPlusSquare />, acceso: ['vendedor', 'gerente'], permiso: 'registro-mueble' },
-    { to: '/gestion-muebles', label: 'Mis Muebles', icon: <FaThList />, acceso: ['vendedor', 'gerente'], permiso: 'gestion-muebles' },
+    { to: '/compras', label: 'Compras', icon: <FaShoppingBag />, acceso: 'invitado' }, 
+    { to: '/ventas', label: 'Ventas', icon: <FaReceipt />, permiso: 'ventas' },
+    { to: '/inventario', label: 'Inventario', icon: <FaBoxes />, permiso: 'inventario' },
+    { to: '/usuarios', label: 'Usuarios', icon: <FaUserCog />, permiso: 'usuarios' },
+    { to: '/categorias', label: 'Categorías', icon: <FaThList />, permiso: 'categorias' },
+    { to: '/registro-mueble', label: 'Nuevo Mueble', icon: <FaPlusSquare />, permiso: 'registro-mueble' },
+    { to: '/gestion-muebles', label: 'Mis Muebles', icon: <FaThList />, permiso: 'gestion-muebles' },
   ];
-
+  
+  // SOLUCIÓN: Delega toda la inteligencia a la función tienePermiso
   const linksFiltrados = links.filter(link => {
     if (link.acceso === 'todos') return true;
+    if (link.acceso === 'invitado') return !usuario;
     if (!usuario) return false;
-    if (usuario.rol === 'gerente') return true;
+    
+    // Si tiene sesión, verificamos si tiene el permiso asociado al botón
     return tienePermiso(link.permiso);
   });
+
   return (
     <nav className="navbar">
-
-      {/* Brand */}
       <div className="navbar-brand">
         <img src={logo} alt="Ecology Muebles" className="brand-logo" />
         <span className="brand-texto">ECOLOGY MUEBLES</span>
       </div>
 
-      {/* Centro: flecha izq + links + flecha der */}
       <div className="navbar-center">
         <button className="navbar-scroll-btn" onClick={() => scrollLinks(-1)}>
           <FaChevronLeft />
@@ -77,7 +80,6 @@ function Navbar() {
         </button>
       </div>
 
-      {/* Sesión — siempre visible al lado derecho */}
       <div className="navbar-sesion">
         {usuario ? (
           <>
@@ -105,7 +107,6 @@ function Navbar() {
         )}
       </div>
 
-      {/* Hamburguesa — solo mobile */}
       <button
         className="navbar-hamburguesa"
         onClick={() => setMenuAbierto(!menuAbierto)}
@@ -113,7 +114,6 @@ function Navbar() {
         {menuAbierto ? <FaTimes /> : <FaBars />}
       </button>
 
-      {/* Menú mobile */}
       {menuAbierto && (
         <>
           <ul className="navbar-mobile-menu">
