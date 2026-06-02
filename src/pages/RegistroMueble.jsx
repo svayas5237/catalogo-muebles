@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import API from '../api/axios';
+import API, { BASE_URL } from '../api/axios';
 import { FaBox, FaRuler, FaImage, FaCheck, FaArrowLeft, FaArrowRight, FaUpload, FaTimes } from 'react-icons/fa';
 import './RegistroMueble.css';
 
@@ -87,16 +87,17 @@ function RegistroMueble() {
   };
 
   const subirFoto = async (file) => {
-    const formData = new FormData();
-    formData.append('archivo', file);
-    const res = await fetch('http://localhost:5223/api/Archivos/subir', {
-      method: 'POST',
-      body: formData,
-    });
-    if (!res.ok) throw new Error('Error al subir foto');
-    const data = await res.json();
-    return `http://localhost:5223${data.urlImagen}`;
-  };
+  const formData = new FormData();
+  formData.append('archivo', file);
+
+  const res = await API.post('/Archivos/subir', formData, {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    },
+  });
+
+  return `${BASE_URL}${res.data.urlImagen}`;
+};
 
   const validarPaso1 = () => {
     const nuevosErrores = {};
