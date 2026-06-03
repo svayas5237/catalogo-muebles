@@ -111,7 +111,7 @@ function Home() {
           <div className="porque-card">
             <span className="porque-icon">💰</span>
             <h3>Precios justos</h3>
-            <p>Al ser fabricantes directos, te ofrecemos los mejores precios del mercado.</p>
+            <p>Te ofrecemos los mejores precios del mercado.</p>
           </div>
           <div className="porque-card">
             <span className="porque-icon">🚚</span>
@@ -130,7 +130,7 @@ function Home() {
       <section className="contacto-section">
         <div className="contacto-info">
           <h2>Encuéntranos</h2>
-          <p>Visítanos en nuestro taller o contáctanos por cualquiera de estos medios.</p>
+          <p>Visítanos en nuestro local o contáctanos por cualquiera de estos medios.</p>
           <div className="contacto-items">
             <div className="contacto-item">
               <FaMapMarkerAlt className="contacto-icon" />

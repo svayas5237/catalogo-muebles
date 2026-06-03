@@ -235,3 +235,142 @@
     align-self: flex-end;
   }
 }
+ /* ==========================
+   TABLET
+========================== */
+@media (max-width: 992px) {
+
+  .mis-compras-container {
+    padding: 30px 15px;
+  }
+
+  .compra-body {
+    grid-template-columns: 1fr;
+  }
+
+  .compra-datos-envio {
+    width: 100%;
+  }
+
+  .compra-productos {
+    width: 100%;
+  }
+}
+
+
+/* ==========================
+   CELULARES
+========================== */
+@media (max-width: 768px) {
+
+  .titulo-compras {
+    font-size: 1.6rem;
+  }
+
+  .compra-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .compra-orden,
+  .compra-total,
+  .compra-fecha {
+    width: 100%;
+  }
+
+  .compra-total {
+    text-align: center;
+  }
+
+  .compra-body {
+    padding: 15px;
+  }
+
+  .producto-item {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .producto-img {
+    width: 140px;
+    height: 140px;
+  }
+
+  .producto-info {
+    width: 100%;
+  }
+
+  .producto-info h4 {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .cantidad-badge {
+    align-self: center;
+  }
+
+  .buscador-input-group {
+    flex-direction: column;
+  }
+
+  .buscador-input-group button {
+    width: 100%;
+    justify-content: center;
+    padding: 12px;
+  }
+
+  .buscador-input-group input {
+    width: 100%;
+  }
+
+  .detalles-tecnicos {
+    text-align: left;
+  }
+}
+
+
+/* ==========================
+   CELULARES PEQUEÑOS
+========================== */
+@media (max-width: 480px) {
+
+  .mis-compras-container {
+    padding: 20px 10px;
+  }
+
+  .titulo-compras {
+    font-size: 1.4rem;
+  }
+
+  .compra-header {
+    padding: 15px;
+  }
+
+  .compra-fecha {
+    font-size: 0.9rem;
+  }
+
+  .compra-orden {
+    font-size: 1rem;
+  }
+
+  .compra-total {
+    font-size: 1rem;
+  }
+
+  .producto-img {
+    width: 120px;
+    height: 120px;
+  }
+
+  .compra-datos-envio,
+  .buscador-invitado {
+    padding: 15px;
+  }
+
+  .detalles-tecnicos {
+    font-size: 0.8rem;
+  }
+}

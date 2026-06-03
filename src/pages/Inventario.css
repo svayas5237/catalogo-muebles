@@ -3,7 +3,7 @@
 }
 
 /* =========================================
-   RESUMEN CARDS (Tarjetas Superiores)
+   RESUMEN CARDS
 ========================================= */
 .resumen-cards {
   display: grid;
@@ -44,13 +44,13 @@
   opacity: 0.9 !important;
 }
 
-.resumen-card.verde { background: linear-gradient(135deg, #40916c, #52b788); }
+.resumen-card.verde   { background: linear-gradient(135deg, #40916c, #52b788); }
 .resumen-card.amarillo { background: linear-gradient(135deg, #e9c46a, #f4a261); }
-.resumen-card.rojo { background: linear-gradient(135deg, #e63946, #c1121f); }
+.resumen-card.rojo    { background: linear-gradient(135deg, #e63946, #c1121f); }
 
 
 /* =========================================
-   BUSCADOR E INVENTARIO
+   BUSCADOR
 ========================================= */
 .inv-search {
   display: flex;
@@ -73,18 +73,23 @@
   color: var(--negro);
 }
 
-/* Tabla Principal */
+
+/* =========================================
+   TABLA PRINCIPAL
+========================================= */
 .tabla-wrapper {
   background: var(--blanco);
   border-radius: 12px;
   box-shadow: var(--sombra);
-  overflow-x: auto; /* Permite el scroll horizontal */
+  overflow-x: auto;
   border: 1px solid var(--gris-borde);
+  -webkit-overflow-scrolling: touch;
 }
 
 .inv-tabla {
   width: 100%;
   border-collapse: collapse;
+  min-width: 700px;
 }
 
 .inv-tabla thead {
@@ -109,17 +114,9 @@
   vertical-align: middle;
 }
 
-.inv-tabla tbody tr:hover {
-  background-color: #f0faf4;
-}
-
-.fila-agotada {
-  background-color: #fff5f5 !important;
-}
-
-.fila-entregada {
-  background-color: #f0fdf4 !important;
-}
+.inv-tabla tbody tr:hover { background-color: #f0faf4; }
+.fila-agotada  { background-color: #fff5f5 !important; }
+.fila-entregada { background-color: #f0fdf4 !important; }
 
 .td-nombre {
   font-weight: 600;
@@ -138,7 +135,7 @@
   white-space: nowrap;
 }
 
-/* Insignias (Badges) */
+/* Badges */
 .badge-entregado {
   display: inline-flex;
   align-items: center;
@@ -149,19 +146,11 @@
   white-space: nowrap;
 }
 
-.entregado-si {
-  background: #d4edda;
-  color: #155724;
-  border: 1px solid #b7e4c7;
-}
+.entregado-si      { background: #d4edda; color: #155724; border: 1px solid #b7e4c7; }
+.entregado-no      { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+.entregado-parcial { background: #fff3cd; color: #856404; border: 1px solid #ffc107; }
 
-.entregado-no {
-  background: #f8d7da;
-  color: #721c24;
-  border: 1px solid #f5c6cb;
-}
-
-/* Botón movimiento tabla */
+/* Botón movimiento */
 .btn-movimiento {
   display: flex;
   align-items: center;
@@ -185,9 +174,15 @@
   border-color: var(--verde-oscuro);
 }
 
+/* Scrollbar tabla */
+.tabla-wrapper::-webkit-scrollbar { height: 8px; }
+.tabla-wrapper::-webkit-scrollbar-track { background: #eaf4f0; border-radius: 0 0 12px 12px; }
+.tabla-wrapper::-webkit-scrollbar-thumb { background: #74c69d; border-radius: 10px; border: 2px solid #eaf4f0; }
+.tabla-wrapper::-webkit-scrollbar-thumb:hover { background: #52b788; }
+
 
 /* =========================================
-   MODAL DE MOVIMIENTOS
+   MODAL
 ========================================= */
 .modal-overlay {
   position: fixed;
@@ -198,6 +193,7 @@
   justify-content: center;
   z-index: 200;
   backdrop-filter: blur(3px);
+  padding: 16px;
 }
 
 .modal {
@@ -207,25 +203,13 @@
   width: 100%;
   max-width: 420px;
   box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+  max-height: 90vh;
+  overflow-y: auto;
 }
 
-.modal h2 {
-  font-size: 1.3rem;
-  color: var(--verde-oscuro);
-  margin-bottom: 12px;
-}
-
-.modal-producto {
-  font-size: 1rem;
-  color: var(--negro);
-  margin-bottom: 4px;
-}
-
-.modal-stock {
-  font-size: 0.95rem;
-  color: #555;
-  margin-bottom: 20px;
-}
+.modal h2         { font-size: 1.3rem; color: var(--verde-oscuro); margin-bottom: 12px; }
+.modal-producto   { font-size: 1rem; color: var(--negro); margin-bottom: 4px; }
+.modal-stock      { font-size: 0.95rem; color: #555; margin-bottom: 20px; }
 
 .modal-form {
   display: flex;
@@ -234,16 +218,9 @@
   margin-bottom: 20px;
 }
 
-.modal-form label {
-  font-weight: 600;
-  color: var(--negro);
-  font-size: 0.9rem;
-}
+.modal-form label { font-weight: 600; color: var(--negro); font-size: 0.9rem; }
 
-.tipo-btns {
-  display: flex;
-  gap: 8px;
-}
+.tipo-btns { display: flex; gap: 8px; }
 
 .tipo-btn {
   flex: 1;
@@ -262,7 +239,7 @@
 }
 
 .tipo-btn.activo.tipo-compra { background: #d8f3dc; border-color: #40916c; color: #40916c; }
-.tipo-btn.activo.tipo-venta { background: #f8d7da; border-color: #e63946; color: #e63946; }
+.tipo-btn.activo.tipo-venta  { background: #f8d7da; border-color: #e63946; color: #e63946; }
 .tipo-btn.activo.tipo-ajuste { background: #fff3cd; border-color: #e9c46a; color: #856404; }
 
 .modal-input {
@@ -272,32 +249,20 @@
   font-size: 1rem;
   outline: none;
   transition: border 0.2s;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-.modal-input:focus {
-  border-color: var(--verde-medio);
-}
+.modal-input:focus { border-color: var(--verde-medio); }
 
-.modal-mensaje {
-  text-align: center;
-  font-weight: 600;
-  margin-bottom: 12px;
-  font-size: 0.95rem;
-}
+.modal-mensaje  { text-align: center; font-weight: 600; margin-bottom: 12px; font-size: 0.95rem; }
 
-.modal-acciones {
-  display: flex;
-  gap: 10px;
-}
-
-.modal-acciones button {
-  flex: 1;
-  padding: 11px;
-}
+.modal-acciones { display: flex; gap: 10px; }
+.modal-acciones button { flex: 1; padding: 11px; }
 
 
 /* =========================================
-   REPORTES Y GRÁFICAS
+   SECCIÓN REPORTES
 ========================================= */
 .reportes-section {
   margin-top: 30px;
@@ -306,16 +271,15 @@
   gap: 20px;
 }
 
-/* ENCABEZADO: Título a la izquierda, botones a la derecha extrema */
+/* Header: título izquierda, botones derecha */
 .reportes-header {
   display: flex;
   align-items: center;
-  flex-wrap: wrap; 
-  width: 100%;
-  gap: 15px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
   padding-bottom: 15px;
   border-bottom: 2px solid var(--verde-pastel);
-  margin-bottom: 10px;
 }
 
 .reportes-titulo {
@@ -328,47 +292,52 @@
   margin: 0;
 }
 
-/* Esto envía los botones al final de la derecha */
 .reportes-export-btns {
   display: flex;
-  gap: 15px;
-  margin-left: auto;
+  gap: 12px;
+  flex-shrink: 0;
 }
 
-/* BOTONES PDF Y EXCEL */
 .btn-export {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  padding: 8px 16px;
+  gap: 8px;
+  padding: 8px 18px;
   border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.4);
+  border: none;
   color: white;
   font-weight: 700;
   font-size: 14px;
   cursor: pointer;
   transition: transform 0.2s, box-shadow 0.2s;
   box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  white-space: nowrap;
 }
 
-.btn-export:hover { 
-  transform: translateY(-2px); 
-  box-shadow: 0 6px 12px rgba(0,0,0,0.2); 
-}
-
-.btn-export.pdf { background: linear-gradient(135deg, #ee505e, #bc4145) !important; }
+.btn-export:hover { transform: translateY(-2px); box-shadow: 0 6px 12px rgba(0,0,0,0.2); }
+.btn-export.pdf   { background: linear-gradient(135deg, #ee505e, #bc4145) !important; }
 .btn-export.excel { background: linear-gradient(135deg, #3fb1a3, #287c72) !important; }
 
-/* FILTROS */
+
+/* =========================================
+   FILTROS
+========================================= */
 .reportes-filtros {
   display: flex;
   align-items: center;
-  gap: 20px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
   background: rgba(255,255,255,0.85);
   padding: 16px 20px;
   border-radius: 12px;
   box-shadow: var(--sombra);
+}
+
+.filtros-controles {
+  display: flex;
+  gap: 16px;
   flex-wrap: wrap;
 }
 
@@ -397,7 +366,6 @@
 }
 
 .filtro-total {
-  margin-left: auto;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -411,11 +379,13 @@
   color: var(--verde-oscuro);
 }
 
-/* RESPONSIVIDAD DE GRÁFICAS - El truco para evitar el aplastamiento */
+
+/* =========================================
+   GRID DE GRÁFICAS
+========================================= */
 .reportes-graficas {
   display: grid;
-  /* Se apilan automáticamente si la pantalla es menor a 350px */
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 20px;
   width: 100%;
 }
@@ -426,7 +396,8 @@
   padding: 20px;
   box-shadow: var(--sombra);
   border: 1px solid rgba(255,255,255,0.9);
-  width: 100%;
+  min-width: 0;
+  overflow: hidden;
 }
 
 .grafica-card h3 {
@@ -442,19 +413,20 @@
   grid-column: 1 / -1;
 }
 
-/* CAJA DE LA GRÁFICA CIRCULAR */
+/* Doughnut */
 .pie-wrapper {
   position: relative;
   width: 100%;
-  height: 300px; /* Altura generosa para que el texto y círculo respiren */
-  margin: 0 auto;
+  height: 280px;
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: visible; /* Garantiza que las letras no se corten */
 }
 
-/* Resumen ingresos */
+
+/* =========================================
+   RESUMEN INGRESOS
+========================================= */
 .resumen-ingresos {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -474,10 +446,7 @@
   transition: transform 0.2s;
 }
 
-.ingreso-item:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--sombra);
-}
+.ingreso-item:hover { transform: translateY(-3px); box-shadow: var(--sombra); }
 
 .ingreso-label {
   font-size: 0.72rem;
@@ -492,11 +461,23 @@
   font-weight: 800;
 }
 
-/* Tabla ventas recientes */
+
+/* =========================================
+   TABLA VENTAS RECIENTES
+========================================= */
+.tabla-scroll-wrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.tabla-scroll-wrapper::-webkit-scrollbar { height: 6px; }
+.tabla-scroll-wrapper::-webkit-scrollbar-track { background: #eaf4f0; border-radius: 10px; }
+.tabla-scroll-wrapper::-webkit-scrollbar-thumb { background: #74c69d; border-radius: 10px; }
+
 .ventas-recientes-tabla {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 8px;
+  min-width: 480px;
 }
 
 .ventas-recientes-tabla thead {
@@ -519,9 +500,7 @@
   color: var(--negro);
 }
 
-.ventas-recientes-tabla tbody tr:hover {
-  background: #f0faf4;
-}
+.ventas-recientes-tabla tbody tr:hover { background: #f0faf4; }
 
 .sin-datos {
   text-align: center;
@@ -531,124 +510,141 @@
 }
 
 
-/* ==================================================== */
-/* ESTILIZACIÓN DE LA BARRA DE DESPLAZAMIENTO (SCROLL)  */
-/* ==================================================== */
-.tabla-wrapper::-webkit-scrollbar,
-.grafica-full::-webkit-scrollbar {
-  height: 12px;
+/* =========================================
+   MEDIA QUERIES
+========================================= */
+
+/* TABLET (≤ 1024px) */
+@media (max-width: 1024px) {
+  .reportes-graficas {
+    grid-template-columns: 1fr;
+  }
+
+  .resumen-ingresos {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .pie-wrapper {
+    height: 260px;
+  }
 }
 
-.tabla-wrapper::-webkit-scrollbar-track,
-.grafica-full::-webkit-scrollbar-track {
-  background: #eaf4f0; 
-  border-radius: 0 0 12px 12px;
-}
-
-.tabla-wrapper::-webkit-scrollbar-thumb,
-.grafica-full::-webkit-scrollbar-thumb {
-  background: #74c69d; 
-  border-radius: 10px;
-  border: 2px solid #eaf4f0; 
-}
-
-.tabla-wrapper::-webkit-scrollbar-thumb:hover,
-.grafica-full::-webkit-scrollbar-thumb:hover {
-  background: #52b788; 
-}
-
-.entregado-parcial {
-  background: #fff3cd;
-  color: #856404;
-  border: 1px solid #ffc107;
-}
-
-/* ==================================================== */
-/* MEDIA QUERIES (Celulares y Tablets)                  */
-/* ==================================================== */
-
+/* MÓVIL (≤ 768px) */
 @media (max-width: 768px) {
   .inventario-container {
     padding: 0 12px;
   }
 
+  /* Cards superiores */
   .resumen-cards {
     grid-template-columns: 1fr;
     gap: 10px;
   }
 
-  .tabla-wrapper {
-    -webkit-overflow-scrolling: touch;
-  }
-  
-  .inv-tabla {
-    min-width: 800px; 
-  }
-  
-  .inv-tabla th, .inv-tabla td {
-    padding: 10px 8px;
-    font-size: 0.8rem;
-  }
-  
-  .inv-tabla th:nth-child(5), .inv-tabla td:nth-child(5) {
-    display: none; 
-  }
-  
-  .btn-movimiento {
-    padding: 6px 12px;
-    font-size: 0.8rem;
-  }
-
-  /* El encabezado de reportes en celular */
+  /* Header reportes */
   .reportes-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 15px;
-  }
-
-  /* En celular, los botones ya no van flotando, se acomodan abajo del título */
-  .reportes-export-btns {
-    margin-left: 0;
-    width: 100%;
-    justify-content: flex-start;
-  }
-
-  .reportes-filtros {
     flex-direction: column;
     align-items: stretch;
     gap: 12px;
-    padding: 14px;
   }
-  
+
+  .reportes-titulo {
+    font-size: 1.2rem;
+    justify-content: center;
+  }
+
+  .reportes-export-btns {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .btn-export {
+    flex: 1;
+    max-width: 160px;
+  }
+
+  /* Filtros */
+  .reportes-filtros {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 14px;
+    gap: 12px;
+  }
+
+  .filtros-controles {
+    width: 100%;
+    gap: 12px;
+  }
+
+  .filtro-item {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .filtro-item select {
+    width: 100%;
+  }
+
   .filtro-total {
-    margin-left: 0;
     justify-content: space-between;
-    border-top: 1px solid #ddd;
-    padding-top: 10px;
+    border-top: 1px solid #e0e0e0;
+    padding-top: 12px;
+  }
+
+  /* Gráficas: una columna */
+  .reportes-graficas {
+    grid-template-columns: 1fr;
+    gap: 15px;
   }
 
   .grafica-card {
-    padding: 14px 12px;
-  }
-  
-  .pie-wrapper {
-    height: auto;
-    min-height: 250px;
+    padding: 16px;
   }
 
+  .grafica-card h3 {
+    font-size: 0.95rem;
+    text-align: center;
+  }
+
+  /* Doughnut en móvil: leyenda abajo */
+  .pie-wrapper {
+    height: auto;
+    min-height: 240px;
+    flex-direction: column;
+  }
+
+  /* Resumen ingresos: 2 columnas en móvil */
   .resumen-ingresos {
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
   }
-  
-  .ingreso-valor { font-size: 1rem; }
-  .ingreso-label { font-size: 0.68rem; }
 
-  .grafica-full {
-    overflow-x: auto;
+  .ingreso-item {
+    padding: 12px 8px;
   }
-  
-  .ventas-recientes-tabla {
-    min-width: 500px;
+
+  .ingreso-label { font-size: 0.68rem; }
+  .ingreso-valor { font-size: 1rem; }
+}
+
+/* MÓVIL PEQUEÑO (≤ 480px) */
+@media (max-width: 480px) {
+  .reportes-titulo { font-size: 1.05rem; }
+
+  .btn-export { font-size: 13px; padding: 9px 12px; }
+
+  .grafica-card { padding: 12px; }
+  .grafica-card h3 { font-size: 0.88rem; }
+
+  /* Ingresos: columna única en pantallas muy pequeñas */
+  .resumen-ingresos {
+    grid-template-columns: repeat(2, 1fr);
   }
+
+  .ingreso-label { font-size: 0.65rem; }
+  .ingreso-valor { font-size: 0.95rem; }
+
+  .filtro-total strong { font-size: 1.1rem; }
+
+  .pie-wrapper { min-height: 220px; }
 }

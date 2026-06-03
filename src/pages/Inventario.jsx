@@ -54,7 +54,6 @@ function Inventario() {
     cargarDatos();
   }, []);
 
-  // ===== CLIENTES QUE COMPRARON EL PRODUCTO DEL MODAL =====
   const clientesParaComboBox = [];
   if (modal) {
     const mapClientes = new Set();
@@ -77,7 +76,6 @@ function Inventario() {
     });
   }
 
-  // ===== EXPORTAR PDF =====
   const exportarPDF = async () => {
     const doc = new jsPDF('p', 'mm', 'a4');
     const pageWidth = doc.internal.pageSize.getWidth();
@@ -127,7 +125,6 @@ function Inventario() {
       styles: { fontSize: 9 },
     });
 
-    // Tabla detalles de entrega por producto
     const detallesConEntrega = [];
     ventas.forEach(v => {
       v.detalles?.forEach(d => {
@@ -197,11 +194,9 @@ function Inventario() {
     doc.save('Reporte_Inventario_' + filtroAnio + '.pdf');
   };
 
-  // ===== EXPORTAR EXCEL =====
   const exportarExcel = () => {
     const wb = XLSX.utils.book_new();
 
-    // Hoja 1: Inventario
     const inventarioData = inventarioFiltrado.map((inv, i) => ({
       '#': i + 1,
       'Producto': inv.producto?.nombre || '—',
@@ -214,7 +209,6 @@ function Inventario() {
     wsInventario['!cols'] = [{ wch: 5 }, { wch: 26 }, { wch: 16 }, { wch: 14 }, { wch: 14 }, { wch: 14 }];
     XLSX.utils.book_append_sheet(wb, wsInventario, 'Inventario');
 
-    // Hoja 2: Entregas (desde DetalleVenta)
     const entregasData = [];
     ventas.forEach(v => {
       v.detalles?.forEach(d => {
@@ -237,7 +231,6 @@ function Inventario() {
     ];
     XLSX.utils.book_append_sheet(wb, wsEntregas, 'Entregas');
 
-    // Hoja 3: Resumen ingresos
     const ventasAnio = ventas.filter(v => new Date(v.fecha).getFullYear() === parseInt(filtroAnio));
     const totalAnio = ventasAnio.reduce((acc, v) => acc + v.total, 0);
     const promedio = ventasAnio.length > 0 ? (totalAnio / ventasAnio.length) : 0;
@@ -253,7 +246,6 @@ function Inventario() {
     wsResumen['!cols'] = [{ wch: 28 }, { wch: 16 }];
     XLSX.utils.book_append_sheet(wb, wsResumen, 'Resumen ' + filtroAnio);
 
-    // Hoja 4: Ventas por mes
     const ventasMesData = ventasPorMes.map(v => ({
       'Mes': v.mes,
       'Total Ventas': '$' + v.total.toFixed(2),
@@ -314,7 +306,6 @@ function Inventario() {
     setMensaje(null);
   };
 
-  // ===== REGISTRAR MOVIMIENTO — actualiza DetalleVenta, no Inventario =====
   const registrarMovimiento = async () => {
     if (movimiento.cantidad <= 0) return;
 
@@ -562,7 +553,6 @@ function Inventario() {
               <th>Stock Mínimo</th>
               <th>Estado</th>
               <th>Entregado</th>
-              {/* Se eliminó <th>Fecha Entrega</th> de aquí */}
               <th>Acciones</th>
             </tr>
           </thead>
@@ -593,7 +583,6 @@ function Inventario() {
                       }
                     })()}
                   </td>
-                  {/* Se eliminó el <td> de Fecha Entrega de aquí */}
                   <td>
                     <button className="btn-movimiento" onClick={() => abrirModal(inv)}>
                       <FaSyncAlt /> Movimiento
@@ -617,18 +606,20 @@ function Inventario() {
         </div>
 
         <div className="reportes-filtros">
-          <div className="filtro-item">
-            <label>Año</label>
-            <select value={filtroAnio} onChange={(e) => setFiltroAnio(e.target.value)}>
-              {[2023, 2024, 2025, 2026].map((a) => (<option key={a} value={a}>{a}</option>))}
-            </select>
-          </div>
-          <div className="filtro-item">
-            <label>Mes</label>
-            <select value={filtroMes} onChange={(e) => setFiltroMes(e.target.value)}>
-              <option value="todos">Todos los meses</option>
-              {meses.map((m, i) => (<option key={i} value={i}>{m}</option>))}
-            </select>
+          <div className="filtros-controles">
+            <div className="filtro-item">
+              <label>Año</label>
+              <select value={filtroAnio} onChange={(e) => setFiltroAnio(e.target.value)}>
+                {[2023, 2024, 2025, 2026].map((a) => (<option key={a} value={a}>{a}</option>))}
+              </select>
+            </div>
+            <div className="filtro-item">
+              <label>Mes</label>
+              <select value={filtroMes} onChange={(e) => setFiltroMes(e.target.value)}>
+                <option value="todos">Todos los meses</option>
+                {meses.map((m, i) => (<option key={i} value={i}>{m}</option>))}
+              </select>
+            </div>
           </div>
           <div className="filtro-total">
             <span>Total del período:</span>
@@ -643,8 +634,8 @@ function Inventario() {
             <ResponsiveContainer width="100%" height={250}>
               <BarChart data={ventasPorMes} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
                 <CartesianGrid strokeDasharray="3 3" stroke="#e0e0e0" />
-                <XAxis dataKey="mes" tick={{ fontSize: 12 }} />
-                <YAxis tick={{ fontSize: 12 }} />
+                <XAxis dataKey="mes" tick={{ fontSize: 11 }} />
+                <YAxis tick={{ fontSize: 11 }} width={55} />
                 <Tooltip formatter={(v) => ['$' + v.toFixed(2), 'Total']} />
                 <Bar dataKey="total" radius={[6, 6, 0, 0]} isAnimationActive={false}>
                   {ventasPorMes.map((_, index) => (
@@ -674,8 +665,8 @@ function Inventario() {
                 margin={{ top: 10, right: 10, left: 0, bottom: 0 }}
               >
                 <CartesianGrid strokeDasharray="3 3" stroke="#e0e0e0" />
-                <XAxis dataKey="nombre" tick={{ fontSize: 11 }} />
-                <YAxis tick={{ fontSize: 12 }} />
+                <XAxis dataKey="nombre" tick={{ fontSize: 10 }} />
+                <YAxis tick={{ fontSize: 11 }} width={35} />
                 <Tooltip />
                 <Bar dataKey="stock" name="Stock Actual" radius={[6,6,0,0]} isAnimationActive={false}>
                   {inventarios.map((_, index) => (
@@ -724,26 +715,28 @@ function Inventario() {
 
           <div className="grafica-card grafica-full">
             <h3>🕒 Últimas 5 Ventas Realizadas</h3>
-            <table className="ventas-recientes-tabla">
-              <thead>
-                <tr><th>#</th><th>Cliente</th><th>Fecha</th><th>Productos</th><th>Total</th></tr>
-              </thead>
-              <tbody>
-                {ventas
-                  .filter(v => new Date(v.fecha).getFullYear() === parseInt(filtroAnio))
-                  .sort((a, b) => new Date(b.fecha) - new Date(a.fecha))
-                  .slice(0, 5)
-                  .map((v, i) => (
-                    <tr key={v.idVenta}>
-                      <td>{i + 1}</td>
-                      <td>{v.cliente?.nombre} {v.cliente?.apellido}</td>
-                      <td>{new Date(v.fecha).toLocaleDateString('es-EC')}</td>
-                      <td>{v.detalles?.length || 0} producto(s)</td>
-                      <td><strong style={{ color: COLORS_BORDER[i % COLORS_BORDER.length] }}>${v.total?.toFixed(2)}</strong></td>
-                    </tr>
-                  ))}
-              </tbody>
-            </table>
+            <div className="tabla-scroll-wrapper">
+              <table className="ventas-recientes-tabla">
+                <thead>
+                  <tr><th>#</th><th>Cliente</th><th>Fecha</th><th>Productos</th><th>Total</th></tr>
+                </thead>
+                <tbody>
+                  {ventas
+                    .filter(v => new Date(v.fecha).getFullYear() === parseInt(filtroAnio))
+                    .sort((a, b) => new Date(b.fecha) - new Date(a.fecha))
+                    .slice(0, 5)
+                    .map((v, i) => (
+                      <tr key={v.idVenta}>
+                        <td>{i + 1}</td>
+                        <td>{v.cliente?.nombre} {v.cliente?.apellido}</td>
+                        <td>{new Date(v.fecha).toLocaleDateString('es-EC')}</td>
+                        <td>{v.detalles?.length || 0} producto(s)</td>
+                        <td><strong style={{ color: COLORS_BORDER[i % COLORS_BORDER.length] }}>${v.total?.toFixed(2)}</strong></td>
+                      </tr>
+                    ))}
+                </tbody>
+              </table>
+            </div>
             {ventas.filter(v => new Date(v.fecha).getFullYear() === parseInt(filtroAnio)).length === 0 && (
               <div className="sin-datos">😕 No hay ventas en este año</div>
             )}
