@@ -1156,6 +1156,18 @@
   width: 100%;
 }
 
+.comprobante-thumb {
+  width: 320px;
+  height: 320px;
+  object-fit: contain;
+  border-radius: 10px;
+  border: 1px solid var(--verde-medio);
+  padding: 6px;
+  background: white;
+  display: block;
+  margin: 8px auto;
+}
+
 .pdf-icono { font-size: 2rem; }
 
 .pdf-nombre {
